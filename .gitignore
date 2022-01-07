@@ -131,3 +131,6 @@ dmypy.json
 # Ide settings
 .idea/
 .idea
+
+# Private data
+user_data/
