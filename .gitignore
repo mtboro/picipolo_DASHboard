@@ -130,3 +130,6 @@ dmypy.json
 
 # Private data
 user_data/
+
+#hide IDE files
+.idea
