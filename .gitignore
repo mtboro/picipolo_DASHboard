@@ -128,8 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Ide settings
+.idea/
+.idea
+
 # Private data
 user_data/
-
-#hide IDE files
-.idea
