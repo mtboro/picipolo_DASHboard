@@ -130,3 +130,9 @@ dmypy.json
 
 # Private data
 user_data/
+
+# ide settings
+.idea
+
+# ignore notebooks to make prototyping easier
+.ipynb
