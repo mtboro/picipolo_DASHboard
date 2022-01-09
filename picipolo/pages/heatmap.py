@@ -4,7 +4,7 @@ from pages.plots import heatmap
 
 
 def app():
-    st.markdown("## Data Upload")
+    st.markdown("## Heatmap")
 
     data = heatmap.load_data()
 
