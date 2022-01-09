@@ -15,7 +15,7 @@ day_names = ['Monday', 'Tuesday', 'Wednesday',
 
 def load_data() -> pd.DataFrame:
     file_path = Path(__file__).resolve()
-    data_path = file_path.parents[1].joinpath('data', 'user_data', 'parsed', 'messengerData.csv')
+    data_path = file_path.parents[3].joinpath('data', 'user_data', 'parsed', 'messengerData.csv')
     df = pd.read_csv(data_path, delimiter=';')
 
     df['time'] = pd.to_datetime(df['time'])
