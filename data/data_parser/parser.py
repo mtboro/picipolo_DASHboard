@@ -19,13 +19,21 @@ class Parser:
         self.messages_data = []
         self.single_person = single_person
 
-    @classmethod
-    def __get_date(cls, timestamp_ms: int) -> str:
+    @staticmethod
+    def __get_date(timestamp_ms: int) -> str:
         """
         transform date from ms to year-month-day-hour format
         """
         date = datetime.fromtimestamp(timestamp_ms / 1000)
         return date.strftime("%Y.%m.%d %X")
+
+    @staticmethod
+    def __sanitize_string(s: str) -> str:
+        s = s.replace('"', '""')
+        s = s.replace(';', ' ')
+        s = s.replace('\n', '')
+        s = s.replace('\r', '')
+        return s
 
     @staticmethod
     def parse_json(f: Union[str, bytes]) -> dict:
@@ -53,19 +61,13 @@ class Parser:
 
             for mess in self.messages_data:
                 name = mess['name']
-                name = name.replace('"', '""')
-                name = name.replace(';', ' ')
-                name = name.replace('\n', '')
-                name = name.replace('\r', '')
+                name = Parser.__sanitize_string(name)
 
                 who = mess['sender_name']
                 when = Parser.__get_date(mess['timestamp_ms'])
                 emojis = Parser.__get_reactions(mess)
                 type, content = Parser.__get_type_and_content(mess)
-                content = content.replace('"', '""')
-                content = content.replace(';', ' ')
-                content = content.replace('\n', '')
-                content = content.replace('\r', '')
+                content = Parser.__sanitize_string(content)
 
                 row = f'{name};{who};{when};{type};{content};{emojis}'
                 parsed_data.write(f'{row}\n')
