@@ -9,18 +9,10 @@ import plotly.graph_objs as go
 
 from pathlib import Path
 
+from pages.plots.utils import load_data
+
 day_names = ['Monday', 'Tuesday', 'Wednesday',
              'Thursday', 'Friday', 'Saturday', 'Sunday']
-
-
-def load_data() -> pd.DataFrame:
-    file_path = Path(__file__).resolve()
-    data_path = file_path.parents[3].joinpath('data', 'user_data', 'parsed', 'messengerData.csv')
-    df = pd.read_csv(data_path, delimiter=';')
-
-    df['time'] = pd.to_datetime(df['time'])
-
-    return df
 
 
 def preprocess_data(df: pd.DataFrame, me: str) -> pd.DataFrame:
