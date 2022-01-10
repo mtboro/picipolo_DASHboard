@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from plots import heatmap_friends
+from pages.plots import heatmap_friends
 
 
 def app():
