@@ -1,12 +1,11 @@
 import streamlit as st
 from datetime import datetime
-from pages.plots import heatmap
-
+from pages.plots import heatmap, utils
 
 def app():
     st.markdown("## Heatmap")
 
-    data = heatmap.load_data()
+    data = utils.load_data()
 
     start = data['time'].min()
     end = datetime.now()
