@@ -1,6 +1,7 @@
 import streamlit as st
 from datetime import datetime
-from pages.plots import heatmap, utils
+from pages.plots import heatmap, utils, line_chart_messages
+
 
 def app():
     st.markdown("## Heatmap")
@@ -15,3 +16,8 @@ def app():
     fig = heatmap.create_heatmap(data, start, end, me=name)
 
     st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("## Line chart")
+    line_chart = line_chart_messages.create_plot()
+    st.plotly_chart(line_chart, use_container_width=True)
+    st.plotly_chart()
