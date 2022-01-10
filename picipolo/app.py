@@ -10,9 +10,9 @@ app = MultiPage()
 st.title("Data Storyteller Application")
 
 app.add_page("Upload Data", data_upload.app)
-app.add_page("data_facebook_upload", data_facebook_upload.app)
+app.add_page("Upload FB Data", data_facebook_upload.app)
 app.add_page("Heatmap", heatmap.app)
-app.add_page("friends", friends.app)
+app.add_page("Friends", friends.app)
 
 if __name__ == '__main__':
     app.run()
