@@ -23,9 +23,9 @@ class Fb_parser:
 
     @staticmethod
     def __get_date(timestamp: int) -> str:
-        '''
+        """
         transform date from ms to year-month-day-hour format
-        '''
+        """
         date = datetime.fromtimestamp(timestamp)
         return date.strftime("%Y.%m.%d %X")
 
@@ -101,33 +101,25 @@ class Fb_parser:
 
         for filename in os.listdir(file_path):
             if filename == "friends.json":
-                print('if w', filename)
                 with open(file_path + "/" + filename) as json_file:
-                    print('weszlo w', filename)
                     tmp = Fb_parser.parse_json(json_file)
                     self.friends_data.append(tmp['friends_v2'])
                 self.friends_data = list(chain.from_iterable(self.friends_data))
 
             if filename == "friend_requests_sent.json":
-                print('if w', filename)
                 with open(file_path + "/" + filename) as json_file:
-                    print('weszlo w', filename)
                     tmp = Fb_parser.parse_json(json_file)
                     self.friend_requests_sent_data.append(tmp['sent_requests_v2'])
                 self.friend_requests_sent_data = list(chain.from_iterable(self.friend_requests_sent_data))
 
             if filename == "friend_requests_received.json":
-                print('if w', filename)
                 with open(file_path + "/" + filename) as json_file:
-                    print('weszlo w', filename)
                     tmp = Fb_parser.parse_json(json_file)
                     self.friend_requests_received_data.append(tmp['received_requests_v2'])
                 self.friend_requests_received_data = list(chain.from_iterable(self.friend_requests_received_data))
 
             if filename == "rejected_friend_requests.json":
-                print('if w', filename)
                 with open(file_path + "/" + filename) as json_file:
-                    print('weszlo w', filename)
                     tmp = Fb_parser.parse_json(json_file)
                     self.friend_requests_rejected_data.append(tmp['rejected_requests_v2'])
                 self.friend_requests_rejected_data = list(chain.from_iterable(self.friend_requests_rejected_data))

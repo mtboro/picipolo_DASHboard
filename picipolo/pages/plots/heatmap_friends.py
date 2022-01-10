@@ -41,8 +41,8 @@ def create_chart():
     data = df_to_plotly(prepare_data())
     z = np.array(data.get("z"))
     z = z.T
-    fig2 = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
+    fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
                      y=data.get("x"))
 
-    return fig2
+    return fig
 
