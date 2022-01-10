@@ -42,7 +42,6 @@ def create_chart():
     z = np.array(data.get("z"))
     z = z.T
     fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
-                     y=data.get("x"))
+                    y=data.get("x"))
 
     return fig
-
