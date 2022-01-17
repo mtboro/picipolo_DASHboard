@@ -18,6 +18,5 @@ def app():
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("## Line chart")
-    line_chart = line_chart_messages.create_plot()
+    line_chart = line_chart_messages.create_plot(name)
     st.plotly_chart(line_chart, use_container_width=True)
-    st.plotly_chart()

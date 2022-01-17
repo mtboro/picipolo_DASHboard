@@ -2,8 +2,9 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-def load_data():
-    df = pd.read_csv("messengerData.csv", delimiter=";")
+def load_data(me):
+    df = pd.read_csv("data/messengerData.csv", delimiter=";")
+    df = df.loc[df["who"] == me]
     df['time'] = pd.to_datetime(df['time']).dt.strftime('%Y-%m-%d')
     df = df.groupby("time").size().reset_index(name='counts')
     df['cumsum'] = df['counts'].cumsum()
@@ -11,8 +12,8 @@ def load_data():
     return df
 
 
-def create_plot():
-    df = load_data()
+def create_plot(me):
+    df = load_data(me)
     start_date = df[["time"]].head(1).iloc[0]["time"]
     end_date = df[["time"]].tail(1).iloc[0]["time"]
 
