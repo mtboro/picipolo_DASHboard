@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import plotly.express as px
 
 
@@ -27,21 +26,53 @@ def prepare_data():
     df2 = pd.merge(df2, df_friends_sent, on='time', how='left')
     df2.rename(columns={"counts_x": "rejected", "counts_y": "sent"}, inplace=True)
     df2 = df2.fillna(0)
-    df2 = df2.set_index("time")
+    # df2 = df2.set_index("time")
     return df2
 
 
-def df_to_plotly(df):
-    return {'z': df.values.tolist(),
-            'x': df.columns.tolist(),
-            'y': df.index.tolist()}
-
+# def df_to_plotly(df):
+#     return {'z': df.values.tolist(),
+#             'x': df.columns.tolist(),
+#             'y': df.index.tolist()}
+#
 
 def create_chart():
-    data = df_to_plotly(prepare_data())
-    z = np.array(data.get("z"))
-    z = z.T
-    fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
-                    y=data.get("x"))
-
-    return fig
+    # data = df_to_plotly(prepare_data())
+    # z = np.array(data.get("z"))
+    # z = z.T
+    # fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
+    #                 y=data.get("x"))
+    data = prepare_data()
+    fig1 = px.bar(data, x="time", y="received")
+    fig2 = px.bar(data, x="time", y="waiting")
+    fig3 = px.bar(data, x="time", y="rejected")
+    fig4 = px.bar(data, x="time", y="sent")
+    fig1.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        title="Friend requests received",
+        title_font_color="#a1d99b",
+        font_color="#a1d99b"
+    )
+    fig2.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        title="Friend requests waiting",
+        title_font_color="#a1d99b",
+        font_color="#a1d99b"
+    )
+    fig3.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        title="Friend requests rejected",
+        title_font_color="#a1d99b",
+        font_color="#a1d99b"
+    )
+    fig4.update_layout(
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        title="Friend requests sent",
+        title_font_color="#a1d99b",
+        font_color="#a1d99b"
+    )
+    return fig1, fig2, fig3, fig4
