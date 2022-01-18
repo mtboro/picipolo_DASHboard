@@ -1,8 +1,9 @@
 from pathlib import Path
 import pandas as pd
+from typing import Optional, Tuple
 
 
-def load_data() -> pd.DataFrame:
+def load_data() -> Optional[pd.DataFrame]:
     file_path = Path(__file__).resolve()
     data_path = file_path.parents[3].joinpath(
         'data', 'user_data', 'parsed', 'messengerData.csv')
@@ -15,7 +16,7 @@ def load_data() -> pd.DataFrame:
     return df
 
 
-def load_data_bar_chart():
+def load_data_bar_chart() -> Optional[Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]]:
     file_path = Path(__file__).resolve()
     data_path = file_path.parents[3].joinpath(
         'data', 'user_data', 'parsed', 'friends.csv')
@@ -55,7 +56,7 @@ def load_data_bar_chart():
     return df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent
 
 
-def load_data_line_chart(me) -> pd.DataFrame:
+def load_data_line_chart(me) -> Optional[pd.DataFrame]:
     file_path = Path(__file__).resolve()
     data_path = file_path.parents[3].joinpath(
         'data', 'user_data', 'parsed', 'messengerData.csv')
