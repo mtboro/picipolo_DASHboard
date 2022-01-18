@@ -4,6 +4,8 @@ import plotly.graph_objects as go
 
 
 def app():
+    st.markdown('## Total Number of Messages in Conversations')
+
     df = utils.load_data()
     if df is None:
         st.markdown("Please upload data through `Upload Data` page!")
