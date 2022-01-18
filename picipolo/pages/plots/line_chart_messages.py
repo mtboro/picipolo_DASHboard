@@ -1,19 +1,12 @@
-import pandas as pd
+from pages.plots.utils import load_data_line_chart
 import plotly.graph_objects as go
 
 
-def load_data(me):
-    df = pd.read_csv("data/messengerData.csv", delimiter=";")
-    df = df.loc[df["who"] == me]
-    df['time'] = pd.to_datetime(df['time']).dt.strftime('%Y-%m-%d')
-    df = df.groupby("time").size().reset_index(name='counts')
-    df['cumsum'] = df['counts'].cumsum()
-    df = df[["time", "cumsum"]]
-    return df
+
 
 
 def create_plot(me):
-    df = load_data(me)
+    df = load_data_line_chart(me)
     start_date = df[["time"]].head(1).iloc[0]["time"]
     end_date = df[["time"]].tail(1).iloc[0]["time"]
 

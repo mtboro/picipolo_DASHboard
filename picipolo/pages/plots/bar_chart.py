@@ -1,17 +1,11 @@
 import pandas as pd
 import plotly.express as px
+from pages.plots.utils import load_data_bar_chart
 
-
-def load_data():
-    df_friends_received = pd.read_csv("data/friends.csv", delimiter=";")
-    df_friends_waiting = pd.read_csv("data/friend_requests_received.csv", delimiter=";")
-    df_friends_rejected = pd.read_csv("data/friend_requests_rejected.csv", delimiter=";")
-    df_friends_sent = pd.read_csv("data/friend_requests_sent.csv", delimiter=";")
-    return df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent
 
 
 def prepare_data():
-    df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent = load_data()
+    df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent = load_data_bar_chart()
     df_friends_received["time"] = pd.to_datetime(df_friends_received['time']).dt.strftime('%Y')
     df_friends_waiting["time"] = pd.to_datetime(df_friends_waiting['time']).dt.strftime('%Y')
     df_friends_rejected["time"] = pd.to_datetime(df_friends_rejected['time']).dt.strftime('%Y')
