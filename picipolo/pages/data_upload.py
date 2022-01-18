@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
+from PIL import Image
+from pages.plots import utils
 
 
 def app():
@@ -10,7 +12,41 @@ def app():
         r'''
         Steps you need to take in order to use this app:
         - download Messenger and Facebook data
-        [details described here](https://github.com/boro128/picipolo_DASHboard/tree/main)
+        '''
+    )
+    with st.expander("Click here to see detailed explanation"):
+        st.write('Firstly go to Settings & privacy')
+        image1 = Image.open(utils.get_img_path(1))
+        st.image(image1)
+
+        st.write('Then chose Settings')
+        image2 = Image.open(utils.get_img_path(2))
+        st.image(image2)
+
+        st.write('Then go to Your Facebook information')
+        image3 = Image.open(utils.get_img_path(3))
+        st.image(image3)
+
+        st.write('View section Download Your Information')
+        image4 = Image.open(utils.get_img_path(4))
+        st.image(image4)
+
+        st.write('Select JSON as file format, and choose date range of your interest')
+        image5 = Image.open(utils.get_img_path(5))
+        st.image(image5)
+
+        st.write('Make sure to check both Messages and Friends and followers')
+        image6 = Image.open(utils.get_img_path(6))
+        st.image(image6)
+        image7 = Image.open(utils.get_img_path(7))
+        st.image(image7)
+
+        st.write('Finally press \'Request your download\'')
+        image8 = Image.open(utils.get_img_path(8))
+        st.image(image8)
+
+    st.markdown(
+        r'''
         - download both python files from this 
         [link](https://github.com/boro128/picipolo_DASHboard/tree/main/data/data_parser)
         - run parser.py and select directory \messages\inbox
