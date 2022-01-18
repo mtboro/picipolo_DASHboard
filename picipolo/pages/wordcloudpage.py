@@ -1,6 +1,5 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
 import random
 from pages.plots import generate_wordcloud, generate_emoji_wordcloud, utils
 
@@ -13,19 +12,22 @@ def plot_cloud(wordcloud):
 
 
 def app():
-
     df = utils.load_data()
 
-    st.markdown("### simple Wordcloud")
-    # count = st.slider("Ilość słów: ", min_value=5, max_value=15)
-    count = 5
-    if(st.button('Reload wordcloud')):
-        count = random.randint(15, 25)
+    if df is None:
+        st.markdown("Please upload data through `Upload Data` page!")
+    else:
 
-    wc = generate_wordcloud.generate_wordcloud(df, count)
-    st.pyplot(plot_cloud(wc))
+        st.markdown("### simple Wordcloud")
+        # count = st.slider("Ilość słów: ", min_value=5, max_value=15)
+        count = 5
+        if (st.button('Reload wordcloud')):
+            count = random.randint(15, 25)
 
-    st.markdown("### emoji Wordcloud")
+        wc = generate_wordcloud.generate_wordcloud(df, count)
+        st.pyplot(plot_cloud(wc))
 
-    wc_emoji = generate_emoji_wordcloud.generate_emoji_wordcloud(df)
-    st.pyplot(plot_cloud(wc_emoji))
+        st.markdown("### emoji Wordcloud")
+
+        wc_emoji = generate_emoji_wordcloud.generate_emoji_wordcloud(df)
+        st.pyplot(plot_cloud(wc_emoji))
