@@ -11,7 +11,7 @@ def app():
     default_start = data['time'].min().date()
     default_end = datetime.now().date()
 
-    name = st.text_input('Please provide your name', 'John Doe')
+    name = st.text_input('Please provide your name', 'John Doe', key="name")
 
     col1, col2 = st.columns(2)
 
@@ -24,6 +24,11 @@ def app():
 
     st.plotly_chart(fig, use_container_width=True)
 
-    st.markdown("## Line chart")
-    line_chart = line_chart_messages.create_plot(name)
-    st.plotly_chart(line_chart, use_container_width=True)
+    name2 = st.text_input('Please provide your name', 'John Doe', key="name2")
+
+    if name2 != "John Doe":
+        st.markdown("## Line chart")
+        line_chart = line_chart_messages.create_plot(name2)
+        st.plotly_chart(line_chart, use_container_width=True)
+    else:
+        st.markdown("Please fill `name field` to get analysis")
