@@ -14,7 +14,6 @@ def plot_cloud(wordcloud):
 
 
 def generate_emoji_wordcloud(df: pd.DataFrame) -> WordCloud:
-
     df = df[df['type'] == 'T']
     text = ""
     for el in list(df['text']):
@@ -36,7 +35,7 @@ def generate_emoji_wordcloud(df: pd.DataFrame) -> WordCloud:
 
 
 if __name__ == '__main__':
-    path = os.getcwd()+'/messengerData.csv'
+    path = os.getcwd() + '/messengerData.csv'
     df = pd.read_csv(path, sep=';')
 
     wc = generate_emoji_wordcloud(df)

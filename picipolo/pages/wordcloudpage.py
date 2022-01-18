@@ -10,6 +10,7 @@ def plot_cloud(wordcloud):
     plt.axis("off")
     return plt
 
+
 def app():
     df = utils.load_data()
 
