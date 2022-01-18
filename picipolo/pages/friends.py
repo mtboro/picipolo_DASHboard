@@ -1,4 +1,3 @@
-import os
 import streamlit as st
 from pages.plots import bar_chart
 from pages.plots.utils import load_data_bar_chart
