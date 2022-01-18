@@ -18,11 +18,12 @@ def app():
         ranking = ranking.sort_values(ascending=False)
 
         fig = go.Figure(data=[go.Table(
+            columnwidth=[50, 200, 150],
             header=dict(
-                values=['Name', 'Total number of messages'],
+                values=['Rank', 'Name', 'Total number of messages'],
                 fill_color='#262730'),
             cells=dict(
-                values=[ranking.index, ranking.values],
+                values=[[i + 1 for i in range(len(ranking))], ranking.index, ranking.values],
                 line_color='#262730',
                 fill_color='#0e1117')
         )])
