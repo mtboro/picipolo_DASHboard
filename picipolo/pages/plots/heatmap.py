@@ -7,8 +7,6 @@ from pandas.api.types import CategoricalDtype
 import plotly.express as px
 import plotly.graph_objs as go
 
-from pathlib import Path
-
 from pages.plots.utils import load_data
 
 day_names = ['Monday', 'Tuesday', 'Wednesday',
@@ -31,7 +29,7 @@ def preprocess_data(df: pd.DataFrame, me: str) -> pd.DataFrame:
 def prepare_data(df: pd.DataFrame, start: datetime, end: datetime, me: str) -> pd.DataFrame:
     df = preprocess_data(df, me)
 
-    df = df[(df['time'].dt.date >= start) & (df['time'].dt.date  <= end)]
+    df = df[(df['time'].dt.date >= start) & (df['time'].dt.date <= end)]
 
     df = df.groupby(['day_name', 'hour']).size().to_frame('number_of_messages')
 
