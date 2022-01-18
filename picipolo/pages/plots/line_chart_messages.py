@@ -2,9 +2,6 @@ from pages.plots.utils import load_data_line_chart
 import plotly.graph_objects as go
 
 
-
-
-
 def create_plot(me):
     df = load_data_line_chart(me)
     start_date = df[["time"]].head(1).iloc[0]["time"]
