@@ -15,7 +15,6 @@ app.add_page("Heatmap", heatmap.app)
 app.add_page("Friends", friends.app)
 app.add_page("Wordcloud", wordcloudpage.app)
 app.add_page("Ranking", messageranking.app)
-app.add_page("friends", friends.app)
 
 if __name__ == '__main__':
     app.run()
