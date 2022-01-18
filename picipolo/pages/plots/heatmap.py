@@ -31,7 +31,7 @@ def preprocess_data(df: pd.DataFrame, me: str) -> pd.DataFrame:
 def prepare_data(df: pd.DataFrame, start: datetime, end: datetime, me: str) -> pd.DataFrame:
     df = preprocess_data(df, me)
 
-    df = df[(df['time'] >= start) & (df['time'] <= end)]
+    df = df[(df['time'].dt.date >= start) & (df['time'].dt.date  <= end)]
 
     df = df.groupby(['day_name', 'hour']).size().to_frame('number_of_messages')
 
