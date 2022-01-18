@@ -77,3 +77,10 @@ def load_path_fonts():
     file_path = Path(__file__).resolve()
     data_path = file_path.parents[3].joinpath('data', 'fonts', 'Symbola.ttf')
     return data_path.as_posix()
+
+
+def get_img_path(num: int):
+    file_path = Path(__file__).resolve()
+    data_path = file_path.parents[3].joinpath('data', 'instructions', f'instructions{num}.png')
+    return data_path.as_posix()
+
