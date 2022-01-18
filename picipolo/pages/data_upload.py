@@ -13,8 +13,8 @@ def app():
         [details described here](https://github.com/boro128/picipolo_DASHboard/tree/main)
         - download both python files from this 
         [link](https://github.com/boro128/picipolo_DASHboard/tree/main/data/data_parser)
-        - run parser.py and select directory with directories containing your all conversations (\messages\inbox)
-        - run fb_parser.py and select directory (\friends_and_followers)
+        - run parser.py and select directory \messages\inbox
+        - run fb_parser.py and select directory \friends_and_followers
         - upload csv files created by both parsers using selectbox below
         '''
     )
