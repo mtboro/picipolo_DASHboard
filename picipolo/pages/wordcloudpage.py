@@ -10,24 +10,24 @@ def plot_cloud(wordcloud):
     plt.axis("off")
     return plt
 
-
 def app():
     df = utils.load_data()
 
     if df is None:
         st.markdown("Please upload data through `Upload Data` page!")
     else:
+    st.markdown("### Simple Wordcloud")
+    st.markdown("Graphical representations of most commonly used words")
 
-        st.markdown("### simple Wordcloud")
-        # count = st.slider("Ilość słów: ", min_value=5, max_value=15)
-        count = 5
-        if (st.button('Reload wordcloud')):
-            count = random.randint(15, 25)
+    count = 10
+    if(st.button('Reload wordcloud')):
+        count = random.randint(15, 25)
+    letters = 1
+    letters = st.slider("Minimum length of each word:", min_value = 1, max_value=10)
+    wc = generate_wordcloud.generate_wordcloud(df, count, letters)
+    st.pyplot(plot_cloud(wc))
 
-        wc = generate_wordcloud.generate_wordcloud(df, count)
-        st.pyplot(plot_cloud(wc))
-
-        st.markdown("### emoji Wordcloud")
-
-        wc_emoji = generate_emoji_wordcloud.generate_emoji_wordcloud(df)
-        st.pyplot(plot_cloud(wc_emoji))
+    st.markdown("### Emoji Wordcloud")
+    st.markdown("Most used emojis")
+    wc_emoji = generate_emoji_wordcloud.generate_emoji_wordcloud(df)
+    st.pyplot(plot_cloud(wc_emoji))

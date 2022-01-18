@@ -30,7 +30,7 @@ def generate_emoji_wordcloud(df: pd.DataFrame) -> WordCloud:
     font_path = utils.load_path_fonts()
 
     wc = WordCloud(font_path=font_path, regexp=emoji,
-                   width=3000, height=2000, random_state=1, background_color='salmon', colormap='Pastel1',
+                   width=3000, height=2000, random_state=1, background_color='black', colormap='plasma',
                    collocations=False).generate(text)
     return wc
 

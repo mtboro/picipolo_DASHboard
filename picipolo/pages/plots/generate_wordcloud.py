@@ -1,3 +1,4 @@
+from collections import Counter
 from wordcloud import WordCloud
 import os
 import pandas as pd
@@ -11,33 +12,30 @@ def plot_cloud(wordcloud):
     return plt
 
 
-def generate_wordcloud(df: pd.DataFrame, count: int) -> WordCloud:
+def generate_wordcloud(df: pd.DataFrame, count: int, letter: int) -> WordCloud:
+    count += 3
 
-    count+=3
     df = df[df['type'] == 'T']
     text = df['text'].tolist()
+
+    mapka = Counter()
 
     words = []
     for el in text:
         el = str(el).split()
         for el2 in el:
-            words.append(str(el2))
+            if len(el2)>=letter:
+                words.append(str(el2))
 
-    mapka = {}
-    for el in words:
-        mapka.setdefault(el, 0)
-        mapka[el] += 1
 
-    res = dict(sorted(mapka.items(), key=lambda item: -item[1]))
-
-    assert count > 0
-    words_and_freq = list(res.items())[:count]
-
+    mapka = Counter(words)
+    words_and_freq = mapka.most_common(count)
     words = ""
     for el in words_and_freq:
         words += (el[0] + " ")
 
-    wc = WordCloud(width=3000, height=2000, background_color='salmon', colormap='Pastel1',
+
+    wc = WordCloud(width=3000, height=2000, background_color='black', colormap='plasma',
                           collocations=False).generate(words)
     return wc
 
