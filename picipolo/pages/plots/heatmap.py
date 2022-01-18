@@ -33,8 +33,14 @@ def prepare_data(df: pd.DataFrame, start: datetime, end: datetime, me: str) -> p
 
     df = df[(df['time'] >= start) & (df['time'] <= end)]
 
-    df = df.groupby(['day_name', 'hour']).size().reset_index().sort_values(['day_name', 'hour'])
+    df = df.groupby(['day_name', 'hour']).size()
+
+    mux = pd.MultiIndex.from_product([day_names, [i for i in range(24)]], names=['day_name', 'hour'])
+    df = df.reindex(mux, fill_value=0).reset_index()
+
+    df.sort_values(['day_name', 'hour'], inplace=True)
     df.rename(columns={0: 'number_of_messages'}, inplace=True)
+
     return df
 
 
