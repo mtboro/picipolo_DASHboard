@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from pages.plots import bar_chart, heatmap_friends
+from pages.plots import bar_chart
 
 
 def app():
