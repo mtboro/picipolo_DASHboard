@@ -10,10 +10,8 @@ def plot_cloud(wordcloud):
     plt.axis("off")
     return plt
 
-
 def app():
     df = utils.load_data()
-
 
     if df is None:
         st.markdown("Please upload data through `Upload Data` page!")
@@ -25,7 +23,7 @@ def app():
     if(st.button('Reload wordcloud')):
         count = random.randint(15, 25)
     letters = 1
-    letters = st.slider("Ilość liter:", min_value = 1, max_value=10)
+    letters = st.slider("Minimum length of each word:", min_value = 1, max_value=10)
     wc = generate_wordcloud.generate_wordcloud(df, count, letters)
     st.pyplot(plot_cloud(wc))
 
