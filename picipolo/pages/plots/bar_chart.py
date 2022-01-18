@@ -34,7 +34,7 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
     # fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
     #                 y=data.get("x"))
     data = prepare_data(df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent)
-    fig1 = px.bar(data, x="time", y="received",)
+    fig1 = px.bar(data, x="time", y="received", )
     fig2 = px.bar(data, x="time", y="waiting")
     fig3 = px.bar(data, x="time", y="rejected")
     fig4 = px.bar(data, x="time", y="sent")
@@ -47,7 +47,7 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
                           yref='paper',
                           x=0.5, y=-0.25,
                           showarrow=False,
-                          text='On bar chart you can note how many friend requests have you received')]
+                          text='On bar chart you can notice how many friend requests you have received each year')]
     )
     fig2.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
@@ -58,7 +58,8 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
                           yref='paper',
                           x=0.5, y=-0.25,
                           showarrow=False,
-                          text='On bar chart you can note how many friend requests are waiting for your approval')]
+                          text='On bar chart you can notice how many friend requests are waiting for your approval '
+                               'each year')]
     )
     fig3.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
@@ -69,7 +70,7 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
                           yref='paper',
                           x=0.5, y=-0.25,
                           showarrow=False,
-                          text='On bar chart you can note how many friend requests has been rejected')]
+                          text='On bar chart you can notice how many friend requests have been rejected each year')]
     )
     fig4.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
@@ -80,6 +81,6 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
                           yref='paper',
                           x=0.5, y=-0.25,
                           showarrow=False,
-                          text='On bar chart you can note how many friend requests have you sent')]
+                          text='On bar chart you can notice how many friend requests you have sent each year')]
     )
     return fig1, fig2, fig3, fig4

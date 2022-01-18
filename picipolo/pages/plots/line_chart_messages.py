@@ -58,9 +58,8 @@ def create_plot(me):
                            ),
                        ]
                        )
-    layout.update(title="How total number of messages with your friend changed over time?<br><sup>Click Play and "
-                        "check...</sup>",
-
+    layout.update(title="How total number of messages with your friend changed over time?<br><sup>"
+                        "Click Play and check...</sup>",
                   xaxis=dict(range=[start_date, end_date], autorange=False),
                   yaxis=dict(range=[0, max(df["cumsum"])], autorange=False)
                   )
