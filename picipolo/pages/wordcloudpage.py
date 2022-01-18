@@ -16,7 +16,7 @@ def app():
     if df is None:
         st.markdown("Please upload data through `Upload Data` page!")
     else:
-        st.markdown("### Simple Wordcloud")
+        st.markdown("## Wordcloud")
         st.markdown("Graphical representations of most commonly used words")
 
         count = 10
@@ -27,7 +27,7 @@ def app():
         wc = generate_wordcloud.generate_wordcloud(df, count, letters)
         st.pyplot(plot_cloud(wc))
 
-        st.markdown("### Emoji Wordcloud")
+        st.markdown("## Emoji Wordcloud")
         st.markdown("Most used emojis")
         wc_emoji = generate_emoji_wordcloud.generate_emoji_wordcloud(df)
         st.pyplot(plot_cloud(wc_emoji))
