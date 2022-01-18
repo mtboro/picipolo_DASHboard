@@ -15,7 +15,7 @@ def load_data() -> pd.DataFrame:
     return df
 
 
-def load_data_bar_chart():
+def load_data_bar_chart() :
     file_path = Path(__file__).resolve()
     data_path = file_path.parents[3].joinpath(
         'data', 'user_data', 'parsed', 'friends.csv')

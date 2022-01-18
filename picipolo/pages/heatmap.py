@@ -27,12 +27,13 @@ def app():
 
         st.plotly_chart(fig, use_container_width=True)
 
-        name2 = st.text_input('Please provide your name', 'John Doe', key="name2")
+        name2 = st.text_input('Please provide your name', '', key="name2")
 
-        if name2 != "John Doe":
-            st.markdown("## Line chart")
+        if name2 == "":
+            st.markdown("Please fill `name field` with a correct value")
+        else:
+            st.markdown("## Number of messages over time")
             line_chart = line_chart_messages.create_plot(name2)
             st.plotly_chart(line_chart, use_container_width=True)
-        else:
-            st.markdown("Please fill `name field` to get analysis")
+
 

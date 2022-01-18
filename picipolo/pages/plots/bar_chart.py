@@ -34,7 +34,7 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
     # fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
     #                 y=data.get("x"))
     data = prepare_data(df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent)
-    fig1 = px.bar(data, x="time", y="received")
+    fig1 = px.bar(data, x="time", y="received",)
     fig2 = px.bar(data, x="time", y="waiting")
     fig3 = px.bar(data, x="time", y="rejected")
     fig4 = px.bar(data, x="time", y="sent")
@@ -42,28 +42,44 @@ def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, d
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         title="Friend requests received",
-        title_font_color="#a1d99b",
-        font_color="#a1d99b"
+        margin_b=90,
+        annotations=[dict(xref='paper',
+                          yref='paper',
+                          x=0.5, y=-0.25,
+                          showarrow=False,
+                          text='On bar chart you can note how many friend requests have you received')]
     )
     fig2.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         title="Friend requests waiting",
-        title_font_color="#a1d99b",
-        font_color="#a1d99b"
+        margin_b=90,
+        annotations=[dict(xref='paper',
+                          yref='paper',
+                          x=0.5, y=-0.25,
+                          showarrow=False,
+                          text='On bar chart you can note how many friend requests are waiting for your approval')]
     )
     fig3.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         title="Friend requests rejected",
-        title_font_color="#a1d99b",
-        font_color="#a1d99b"
+        margin_b=90,
+        annotations=[dict(xref='paper',
+                          yref='paper',
+                          x=0.5, y=-0.25,
+                          showarrow=False,
+                          text='On bar chart you can note how many friend requests has been rejected')]
     )
     fig4.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         title="Friend requests sent",
-        title_font_color="#a1d99b",
-        font_color="#a1d99b"
+        margin_b=90,
+        annotations=[dict(xref='paper',
+                          yref='paper',
+                          x=0.5, y=-0.25,
+                          showarrow=False,
+                          text='On bar chart you can note how many friend requests have you sent')]
     )
     return fig1, fig2, fig3, fig4

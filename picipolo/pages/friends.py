@@ -20,3 +20,4 @@ def app():
         st.plotly_chart(fig2, config=config, use_container_width=True)
         st.plotly_chart(fig3, config=config, use_container_width=True)
         st.plotly_chart(fig4, config=config, use_container_width=True)
+
