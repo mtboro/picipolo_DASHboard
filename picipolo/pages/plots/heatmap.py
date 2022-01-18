@@ -31,10 +31,19 @@ def preprocess_data(df: pd.DataFrame, me: str) -> pd.DataFrame:
 def prepare_data(df: pd.DataFrame, start: datetime, end: datetime, me: str) -> pd.DataFrame:
     df = preprocess_data(df, me)
 
-    df = df[(df['time'] >= start) & (df['time'] <= end)]
+    df = df[(df['time'].dt.date >= start) & (df['time'].dt.date  <= end)]
 
-    df = df.groupby(['day_name', 'hour']).size().reset_index().sort_values(['day_name', 'hour'])
-    df.rename(columns={0: 'number_of_messages'}, inplace=True)
+    df = df.groupby(['day_name', 'hour']).size().to_frame('number_of_messages')
+
+    mux = pd.MultiIndex.from_product([day_names, [i for i in range(24)]], names=['day_name', 'hour'])
+    add_indices = mux.difference(df.index)
+
+    df_with_missing_indices = pd.DataFrame(index=add_indices, columns=df.columns).fillna(0)
+    df = pd.concat([df, df_with_missing_indices])
+
+    df.reset_index(inplace=True)
+    df.sort_values(['day_name', 'hour'], inplace=True)
+
     return df
 
 
