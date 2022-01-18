@@ -1,6 +1,5 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
 import random
 from pages.plots import generate_wordcloud, generate_emoji_wordcloud, utils
 
@@ -13,9 +12,12 @@ def plot_cloud(wordcloud):
 
 
 def app():
-
     df = utils.load_data()
 
+
+    if df is None:
+        st.markdown("Please upload data through `Upload Data` page!")
+    else:
     st.markdown("### Simple Wordcloud")
     st.markdown("Graphical representations of most commonly used words")
 

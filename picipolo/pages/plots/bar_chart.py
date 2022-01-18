@@ -1,11 +1,8 @@
 import pandas as pd
 import plotly.express as px
-from pages.plots.utils import load_data_bar_chart
 
 
-
-def prepare_data():
-    df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent = load_data_bar_chart()
+def prepare_data(df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent):
     df_friends_received["time"] = pd.to_datetime(df_friends_received['time']).dt.strftime('%Y')
     df_friends_waiting["time"] = pd.to_datetime(df_friends_waiting['time']).dt.strftime('%Y')
     df_friends_rejected["time"] = pd.to_datetime(df_friends_rejected['time']).dt.strftime('%Y')
@@ -30,13 +27,13 @@ def prepare_data():
 #             'y': df.index.tolist()}
 #
 
-def create_chart():
+def create_chart(df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent):
     # data = df_to_plotly(prepare_data())
     # z = np.array(data.get("z"))
     # z = z.T
     # fig = px.imshow(z, labels=dict(x="Year", y="Type of friends invitation", color="Amount"), x=data.get("y"),
     #                 y=data.get("x"))
-    data = prepare_data()
+    data = prepare_data(df_friends_received, df_friends_waiting, df_friends_rejected, df_friends_sent)
     fig1 = px.bar(data, x="time", y="received")
     fig2 = px.bar(data, x="time", y="waiting")
     fig3 = px.bar(data, x="time", y="rejected")

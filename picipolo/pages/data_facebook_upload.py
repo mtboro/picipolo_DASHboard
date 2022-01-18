@@ -6,7 +6,7 @@ def app():
     st.markdown("## Data FB Upload")
 
     # Upload the dataset and save as csv
-    st.markdown("### Upload a csv file - friend_requests_received.csv.")
+    st.markdown("### Upload a csv file `friend_requests_received.csv`.")
     st.write("\n")
 
     # Code to read a single file
@@ -19,15 +19,13 @@ def app():
             print(e)
             data1 = pd.read_excel(uploaded_file)
 
-        ''' Load the data and save the columns with categories as a dataframe. 
-        This section also allows changes in the numerical and categorical columns. '''
     if st.button("Load Data", key=1):
         # Raw data
         st.dataframe(data1)
         data1.to_csv('data/friend_requests_received.csv', index=False)
 
     # Upload the dataset and save as csv
-    st.markdown("### Upload a csv file - friend_requests_sent.csv.")
+    st.markdown("### Upload a csv file `friend_requests_sent.csv`.")
     st.write("\n")
 
     # Code to read a single file
@@ -40,14 +38,12 @@ def app():
             print(e)
             data2 = pd.read_excel(uploaded_file)
 
-        ''' Load the data and save the columns with categories as a dataframe. 
-        This section also allows changes in the numerical and categorical columns. '''
     if st.button("Load Data", key=2):
         # Raw data
         st.dataframe(data2)
         data2.to_csv('data/friend_requests_sent.csv', index=False)
 
-    st.markdown("### Upload a csv file - friend_requests_rejected.csv.")
+    st.markdown("### Upload a csv file `friend_requests_rejected.csv`.")
     st.write("\n")
 
     # Code to read a single file
@@ -60,14 +56,13 @@ def app():
             print(e)
             data3 = pd.read_excel(uploaded_file)
 
-        ''' Load the data and save the columns with categories as a dataframe. 
-        This section also allows changes in the numerical and categorical columns. '''
+
     if st.button("Load Data", key=3):
         # Raw data
         st.dataframe(data3)
         data3.to_csv('data/friend_requests_rejected.csv', index=False)
 
-    st.markdown("### Upload a csv file - friends.csv.")
+    st.markdown("### Upload a csv file `friends.csv`.")
     st.write("\n")
 
     # Code to read a single file
@@ -80,8 +75,6 @@ def app():
             print(e)
             data4 = pd.read_excel(uploaded_file)
 
-        ''' Load the data and save the columns with categories as a dataframe. 
-        This section also allows changes in the numerical and categorical columns. '''
     if st.button("Load Data", key=4):
         # Raw data
         st.dataframe(data4)
