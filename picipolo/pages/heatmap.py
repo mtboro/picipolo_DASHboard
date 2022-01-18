@@ -27,7 +27,6 @@ def app():
 
         st.plotly_chart(fig, use_container_width=True)
 
-    <<<<<<< cosmetic_changes
         name2 = st.text_input('Please provide your name', 'John Doe', key="name2")
 
         if name2 != "John Doe":
