@@ -6,5 +6,5 @@ matplotlib
 wordcloud
 numpy
 datetime
-PIL
+Pillow
 streamlit
