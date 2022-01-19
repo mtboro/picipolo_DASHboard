@@ -4,7 +4,6 @@ pathlib
 plotly
 matplotlib
 wordcloud
-collections
 numpy
 datetime
 PIL
