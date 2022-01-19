@@ -1,0 +1,14 @@
+pandas
+typing
+pathlib
+plotly
+matplotlib
+re
+wordcloud
+os
+collections
+numpy
+datetime
+PIL
+streamlit
+random
